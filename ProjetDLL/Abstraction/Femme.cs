@@ -6,7 +6,18 @@ using System.Threading.Tasks;
 
 namespace ProjetDLL.Abstraction
 {
-    class Femme
+    public class Femme : Personne
     {
+        public Femme() { }
+
+        public Femme(string nom, string prenom) : base(nom, prenom)
+        {
+
+        }
+
+        public override void Indentite()
+        {
+            Console.WriteLine("Je suis une femme");
+        }
     }
 }

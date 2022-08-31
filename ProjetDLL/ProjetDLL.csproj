@@ -43,9 +43,13 @@
   <ItemGroup>
     <Compile Include="Abstraction\Femme.cs" />
     <Compile Include="Abstraction\Homme.cs" />
+    <Compile Include="Abstraction\Personne.cs" />
+    <Compile Include="Association\Adresse.cs" />
+    <Compile Include="Association\Client.cs" />
     <Compile Include="Class1.cs" />
     <Compile Include="Encapsulation\CompteBancaire.cs" />
     <Compile Include="Encapsulation\Rectangle.cs" />
+    <Compile Include="Exception_\SoldeException.cs" />
     <Compile Include="Héritage\Animal.cs" />
     <Compile Include="Héritage\Chat.cs" />
     <Compile Include="Héritage\Chien.cs" />

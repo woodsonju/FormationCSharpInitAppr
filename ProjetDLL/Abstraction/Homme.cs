@@ -6,7 +6,19 @@ using System.Threading.Tasks;
 
 namespace ProjetDLL.Abstraction
 {
-    class Homme
+    public class Homme: Personne
     {
+
+        public Homme() { }
+
+        public Homme(string nom, string prenom) : base(nom, prenom)
+        {
+
+        }
+
+        public override void Indentite()
+        {
+            Console.WriteLine("Je suis un Homme");
+        }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProjetDLL.Exception_;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -32,6 +33,24 @@ namespace ProjetDLL.Encapsulation
         public CompteBancaire(string numero) : this()
         {
             Numero = numero;
+        }
+
+
+        public void Depot(double montant)
+        {
+            this.Solde += montant;  //Solde = Solde + montant
+        }
+
+        public void Retrait(double montant)
+        {
+            if(Solde > montant)
+            {
+                this.Solde -= montant;
+            }else
+            {
+                //Console.WriteLine("Solde insuffisant pour cette opération");
+                throw new SoldeException("Solde insuffisant pour cette opération");
+            }
         }
 
 

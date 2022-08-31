@@ -1,4 +1,6 @@
-﻿using ProjetDLL.Encapsulation;
+﻿using ProjetDLL.Abstraction;
+using ProjetDLL.Association;
+using ProjetDLL.Encapsulation;
 using ProjetDLL.Héritage;
 using System;
 using System.Collections;
@@ -426,8 +428,48 @@ namespace projetConsole
             }
 
             //ABSTRACTION
+            Personne p1 = new Homme();
+            Personne p2 = new Femme();
+
+            //Association: La relation entre deux classe 
+            //Le fait qu'un objet puisse faire partie des attributs d'un autre objet
+            Client client = new Client();
+            client.Nom = "nomClient";
+            client.Prenom = "PrenomClient";
+
+            //Comme on a pas definit de constructeur dans Adresse on peut initialiser les propriétés ainsi
+            client.Adresse = new Adresse() { Num = 15, Street = "rue de Toulouse 31000" };
+
+            Console.WriteLine(client);
 
             #endregion region
+
+            #region Exception 
+            //Une exception est une erreur qui provoque l'arrêt de l'application
+            int val1 = 10;
+            try
+            {
+                Console.WriteLine("Division par zéro : " + val1 / 0);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+
+            CompteBancaire compteB = new CompteBancaire("cccc", 5800);
+
+            try
+            {
+                compteB.Retrait(110000);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+           
+
+            Console.WriteLine("Continue....");
+            #endregion
 
             Console.ReadLine();
         }

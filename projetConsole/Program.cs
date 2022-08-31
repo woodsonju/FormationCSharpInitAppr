@@ -2,6 +2,7 @@
 using ProjetDLL.Association;
 using ProjetDLL.Encapsulation;
 using ProjetDLL.Héritage;
+using ProjetDLL.Interface;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -469,6 +470,110 @@ namespace projetConsole
            
 
             Console.WriteLine("Continue....");
+            #endregion
+
+            #region
+            //Collections : Ce sont des tableaux dynamiques - leur taille n'est pas fixe 
+            //2 type de collections : 
+            
+            //Collection faiblement typées - ArrayList, Stack , Queue 
+           
+            //ArrayList
+            var myArrayList = new ArrayList();
+            Console.WriteLine(myArrayList);
+            Console.WriteLine("Taille du tableau : " + myArrayList.Count); //0
+            myArrayList.Add(5);
+            Console.WriteLine("Taille du tableau : " + myArrayList.Count); //1
+            myArrayList.Add("test");
+            Console.WriteLine("Index du chiffre 5 : " + myArrayList.IndexOf(5)); //position 0
+            myArrayList.Insert(0, 20);
+            Console.WriteLine("Index du chiffre 5 : " + myArrayList.IndexOf(5));  //position 1
+
+            //Boucle for 
+            for (int i10 = 0; i10 < myArrayList.Count; i10++)
+            {
+                Console.WriteLine(myArrayList[i10]);
+            }
+
+            //Boucle Foreach
+            foreach (var item in myArrayList)
+            {
+                Console.WriteLine(item);
+            }
+
+            //Stack - Pile - LIFO - Last In First Out
+            Stack pile = new Stack();
+            pile.Push(1);
+            pile.Push(2);
+            pile.Push("test");
+            pile.Push(3);
+            Console.WriteLine("Nombre éléments dans la pile :  " + pile.Count);
+            Console.WriteLine("La pile contient le chiffre 3 ? " + pile.Contains(3)); //true
+            pile.Pop();
+            Console.WriteLine("La pile contient le chiffre 3 ? " + pile.Contains(3)); //false
+
+            //Queue - FIFO - First In First Out
+            Queue fifo = new Queue();
+            fifo.Enqueue("Dawan");
+            fifo.Enqueue("1");
+            fifo.Enqueue(2);
+            fifo.Enqueue(100);
+            Console.WriteLine("Nombre éléments dans la collection :  " + fifo.Count);
+            Console.WriteLine("La collection contient la chaine Dawan ? " + fifo.Contains("Dawan")); //true
+            fifo.Dequeue();
+            Console.WriteLine("La collection contient  la chaine Dawan ? " + fifo.Contains("Dawan")); //false
+
+            //Collection Fortement 
+            //List
+            List<string> list = new List<string>();
+            Console.WriteLine("La taille de liste : " + list.Count);
+            list.Add("Dawan"); 
+            list.Add("Jehann");
+            Console.WriteLine("Taille de la liste après ajout d'éléments : " + list.Count);
+            Console.WriteLine("Index de Dawan dans la liste : " + list.IndexOf("Dawan"));
+            list.Insert(0, "test");
+            Console.WriteLine("Index de Dawan après Insertion : " + list.IndexOf("Dawan"));
+            list.Remove("Dawan");
+            Console.WriteLine("La liste contient la chaine Dawan ? " + list.Contains("Dawan"));
+
+            //Boucle For 
+            for (int i11 = 0; i11 < list.Count; i11++)
+            {
+                Console.WriteLine("Avec ElementAt " + list.ElementAt(i11));
+                Console.WriteLine("Avec crochet tableau " + list[i11]);
+            }
+
+            //Boucle foreach 
+            foreach (var item in list)
+            {
+                Console.WriteLine(item);
+            }
+
+            //Dictionnaire : Stockahe de type clé:valeur  "<clé, valeur>"
+            Dictionary<int, string> dictionnaire = new Dictionary<int, string>();  
+            Console.WriteLine("Taille du tableau : " + dictionnaire.Count);
+            //Inserer  10 éléments 
+            for (int i12 = 0; i12 < dictionnaire.Count; i12++)
+            {
+                dictionnaire.Add(i12, "chaine" + i12);
+            }
+
+            Console.WriteLine("Taille du dictionnaire :  " + dictionnaire.Count);
+
+            foreach (var cle in dictionnaire.Keys)
+            {
+                Console.WriteLine("clé: {0} - valeur: {1}", cle, dictionnaire[cle]);
+            }
+
+            #region Interface 
+
+            IProduct productFileImpl = new ProductBDDImpl();
+
+            productFileImpl.AddProduct(new Product());
+
+            #endregion
+
+
             #endregion
 
             Console.ReadLine();

@@ -1,4 +1,5 @@
-﻿using ProjetDLL.Abstraction;
+﻿using ProjetDLL;
+using ProjetDLL.Abstraction;
 using ProjetDLL.Association;
 using ProjetDLL.Encapsulation;
 using ProjetDLL.Héritage;
@@ -6,6 +7,7 @@ using ProjetDLL.Interface;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -472,7 +474,7 @@ namespace projetConsole
             Console.WriteLine("Continue....");
             #endregion
 
-            #region
+            #region Collection
             //Collections : Ce sont des tableaux dynamiques - leur taille n'est pas fixe 
             //2 type de collections : 
             
@@ -576,6 +578,121 @@ namespace projetConsole
 
             #endregion
 
+            #region Les fichiers
+            /*
+             * .NET fourni des classes qui permetetnt de manipuler des fichiers 
+             * File et FileInfo 
+             * Pour la classe File elles sont statiques - FileInfo elles sont d'instance
+             */
+            //Créer un repertoire 
+            Directory.CreateDirectory("monDossier"); //Chemin relatif au .exe bin/debug
+           // Directory.CreateDirectory("c:\\monDossier"); //Chemin absolu (1er solution)
+            Directory.CreateDirectory(@"c:\monDossier"); //Chemin absolu (2ème solution)
+
+            Console.WriteLine("************Lister les fichiers dans le repertoire**********************");
+            string[] files =  Directory.GetFiles(@"c:\test\");
+            foreach (string file in files)
+            {
+                Console.WriteLine(file);
+            }
+
+            Console.WriteLine("Lister les fichiers du repertoire avec l'extension .bmp");
+            string[] bmpFiles = Directory.GetFiles(@"c:\test\", "*.bmp");  //.bmp est un fichier d'image 
+            foreach (string bmp in bmpFiles)
+            {
+                Console.WriteLine(bmp);
+            }
+
+            //Récuperer les fichiers d'un repertoire et des sous repertoires 
+            Console.WriteLine("*************Fichiers contenu dans un repertoire et ses sous repertoires");
+            string[] txtFiles = Directory.GetFiles(@"c:\test\", "*.txt", SearchOption.AllDirectories);
+            foreach (string txt in txtFiles)
+            {
+                Console.WriteLine(txt);
+            }
+
+            //Suppression des fichiers d'un repertoire 
+            string[] filesToDelete = Directory.GetFiles(@"c:\test\");
+            foreach (string del in filesToDelete)
+            {
+                File.Delete(del);
+            }
+
+            //Méthodes de la classe FileInfos 
+            FileInfo info = new FileInfo(@"c:\info\file1.txt");
+            var dateCreation = info.CreationTime.ToLongDateString();
+            Console.WriteLine("Date de réation du fichier file.txt " + dateCreation);
+
+
+
+            /*
+             *  Lecture - Ecriture de fichier 
+             *  flux (stream) : canal intermediaire entre la source et la destination 
+             *  1- Charger le fichier dans le flux (Lecture/Ecriture)
+             *  2-Execution des opérations (Lecture/Ecriture)
+             *  3-Fermeture du flux
+             *  .Net fourni 2 classe pour la lecture et l'ecriture : StreamReader (lecture) - StreamWriter(Ecriture)
+             */
+            Console.WriteLine("*****************Lecture d'un fichier*******************");
+            //1-Charger le fichier dans le flux 
+            StreamReader sr = new StreamReader(@"c:\info\file1.txt");
+            //2-Execution des opérations (en lecture)
+            string contenu =  sr.ReadToEnd();
+            //3-Fermeture du flux
+            sr.Close();
+            Console.WriteLine("Contenu du fichier file1.txt " + contenu);
+
+            Console.WriteLine("*************Ecriture dans un fichier***********************");
+            StreamWriter sw = new StreamWriter(@"c:\info\file1.txt", true);
+            sw.WriteLine("Ecriture dans un fichier test2");
+            sw.Close();
+
+            //Using with resource - se charge de liberer les resources à la fin de l'éxecution des opération. 
+            //Donc plus la peine de mettre Close() pour la liberer la ressource 
+            using (StreamWriter sw2 = new StreamWriter(@"c:\info\file1.txt", true))
+            {
+                sw2.WriteLine("Ecriture dans un fichier test3");
+            }
+
+
+            #endregion
+
+            #region Serialisation 
+            //Mecanisme qui permet de sauvegarder l'état d'un objet en mémoire, dans un fichier 
+            //3 types de sérialisation : Binaire, XML, JSON...
+            List<CompteBancaire> listCB = new List<CompteBancaire>();
+            listCB.Add(new CompteBancaire("aaaaa", 15000));
+            listCB.Add(new CompteBancaire("bbbbb", 1000));
+            listCB.Add(new CompteBancaire("ccccc", 65444));
+            listCB.Add(new CompteBancaire("eeeee", 98525));
+
+            //Export XML 
+     //       Tools.ExportXML(@"c:\compte10\comptes.xml", listCB);
+
+            //Import XML (lecture)
+            try
+            {
+                List<CompteBancaire> listCB2 = Tools.ImportXML(@"c:\compte10\comptes.xml");
+                foreach (CompteBancaire compte in listCB2)
+                {
+                    Console.WriteLine(compte);
+                }
+            
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+         
+
+            #endregion
+
+
+            /*                Console.WriteLine(MyMethods.Age20);
+
+                        int ageVal =   TestAge20.UpdateAge20();
+                        Console.WriteLine("Votre age est maintenant : " + ageVal);
+            */
             Console.ReadLine();
         }
 

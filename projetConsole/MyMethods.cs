@@ -8,6 +8,9 @@ namespace projetConsole
 {
    public  class MyMethods
     {
+        //Variable de classe : Classe.Variable (ex: MyMethods.Age20)
+        public static int Age20 { get; set; }
+
         //Visibilité[mot-clé] type-retour  nom-méthode (param) {instrcuctions;}
 
         /// <summary>

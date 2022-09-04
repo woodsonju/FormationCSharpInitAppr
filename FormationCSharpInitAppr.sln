@@ -11,6 +11,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjetDLL", "ProjetDLL\Proj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TP_Concept_Objet", "TP_Concept_Objet\TP_Concept_Objet.csproj", "{7529F441-F30A-48DC-AA1E-3437709047DF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TP_Addition_Graphique", "TP_Addition_Graphique\TP_Addition_Graphique.csproj", "{214BAECA-1EFE-4F4E-8A74-8D379B2B0737}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjetWinForm", "ProjetWinForm\ProjetWinForm.csproj", "{BC575026-432C-4FF6-9975-019752C3CA1B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +37,14 @@ Global
 		{7529F441-F30A-48DC-AA1E-3437709047DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7529F441-F30A-48DC-AA1E-3437709047DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7529F441-F30A-48DC-AA1E-3437709047DF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{214BAECA-1EFE-4F4E-8A74-8D379B2B0737}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{214BAECA-1EFE-4F4E-8A74-8D379B2B0737}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{214BAECA-1EFE-4F4E-8A74-8D379B2B0737}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{214BAECA-1EFE-4F4E-8A74-8D379B2B0737}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BC575026-432C-4FF6-9975-019752C3CA1B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC575026-432C-4FF6-9975-019752C3CA1B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC575026-432C-4FF6-9975-019752C3CA1B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC575026-432C-4FF6-9975-019752C3CA1B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

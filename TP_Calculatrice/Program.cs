@@ -12,7 +12,6 @@ namespace TP_Calculatrice
         {
 
 
-
             Console.ReadLine();
         }
     }
